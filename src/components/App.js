@@ -1,20 +1,18 @@
 // Fichero src/components/App.js
 import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import ls from '../services/localStorage';
 import '../styles/App.scss';
 
 function App() {
+  const INITIAL_TASK = {
+    id: 'initialTask',
+    task: 'Dejar de procastinar y hacer lista de tareas',
+    completed: false,
+  };
   //Variables de estado
-  const [tasks, setTasks] = useState(
-    ls.get('lstasks', [
-      {
-        id: uuid(),
-        task: 'Dejar de procastinar y hacer lista de tareas',
-        completed: false,
-      },
-    ])
-  );
+  const [tasks, setTasks] = useState(ls.get('lstasks', [INITIAL_TASK]));
   const [newTask, setNewTask] = useState('');
   const [isFormHidden, setFormHidden] = useState(true);
 
@@ -102,6 +100,10 @@ function App() {
   };
   return (
     <div className="container">
+      <Routes>
+        <Route path="/" element={<h2>Titulo Pagina Routes</h2>}></Route>
+        <Route path="/info" element={<h2>Pagina de Info</h2>}></Route>
+      </Routes>
       <header className="header">
         <h1 className="header__title">Lista de tareas</h1>
       </header>
