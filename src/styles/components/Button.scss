@@ -1,0 +1,20 @@
+@import '../core/reset.scss';
+
+.button {
+  max-width: 120px;
+  border: 2px ridge purple;
+  border-radius: 0.5em;
+  padding: 3px;
+  background-color: plum;
+  color: purple;
+  font-weight: bold;
+  padding: 5px;
+  cursor: pointer;
+  transition-delay: 100ms;
+
+  &:hover {
+    background-color: purple;
+    color: white;
+    transform: scale(1.2);
+  }
+}

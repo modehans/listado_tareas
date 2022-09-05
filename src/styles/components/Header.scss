@@ -1,0 +1,12 @@
+@import '../core/reset.scss';
+
+
+.header {
+  padding: 2em;
+
+  &__title {
+    font-size: 2em;
+    font-weight: 700;
+
+  }
+}

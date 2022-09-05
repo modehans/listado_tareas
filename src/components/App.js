@@ -1,9 +1,10 @@
-// Fichero src/components/App.js
+import '../styles/App.scss';
+
 import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import ls from '../services/localStorage';
-import '../styles/App.scss';
+import Header from './Header';
+import Button from './Button';
 
 function App() {
   const INITIAL_TASK = {
@@ -28,8 +29,14 @@ function App() {
   };
 
   const handleClickSaveNewTask = (ev) => {
-    const newTaskobj = { id: uuid(), task: newTask, completed: false };
-    setTasks([...tasks, newTaskobj]);
+    const newTaskObj = { id: uuid(), task: newTask, completed: false };
+
+    if (tasks[0].id === 'initialTask') {
+      setTasks([newTaskObj]);
+    } else {
+      setTasks([...tasks, newTaskObj]);
+    }
+
     setNewTask('');
     handleClickShowForm();
   };
@@ -51,7 +58,7 @@ function App() {
               id="newText"
               cols="30"
               rows="5"
-              placeholder="Procastinando no se llega a ningún lado"
+              placeholder="Procastinando, no se llega a ningún lado. Aunque tampoco quiero ir a ningún otro sitio..."
               onChange={handleChangeNewTask}
               value={newTask}
             ></textarea>
@@ -100,18 +107,10 @@ function App() {
   };
   return (
     <div className="container">
-      <Routes>
-        <Route path="/" element={<h2>Titulo Pagina Routes</h2>}></Route>
-        <Route path="/info" element={<h2>Pagina de Info</h2>}></Route>
-      </Routes>
-      <header className="header">
-        <h1 className="header__title">Lista de tareas</h1>
-      </header>
+      <Header />
       <main className="main">
         <ul className="list">{renderTask()}</ul>
-        <button className="button" onClick={handleClickShowForm}>
-          Añadir tarea
-        </button>
+        <Button handleClickShowForm={handleClickShowForm} />
         {renderFormNewTask()}
       </main>
     </div>
