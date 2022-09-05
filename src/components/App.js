@@ -16,6 +16,7 @@ function App() {
   const [tasks, setTasks] = useState(ls.get('lstasks', [INITIAL_TASK]));
   const [newTask, setNewTask] = useState('');
   const [isFormHidden, setFormHidden] = useState(true);
+  const [isDisable, setIsDisable] = useState(true);
 
   useEffect(() => {
     ls.set('lstasks', tasks);
@@ -26,19 +27,22 @@ function App() {
   };
   const handleChangeNewTask = (ev) => {
     setNewTask(ev.currentTarget.value);
+    if (newTask !== '') {
+      setIsDisable(false);
+    }
   };
 
   const handleClickSaveNewTask = (ev) => {
+    ev.preventDefault();
     const newTaskObj = { id: uuid(), task: newTask, completed: false };
-
     if (tasks[0].id === 'initialTask') {
       setTasks([newTaskObj]);
     } else {
       setTasks([...tasks, newTaskObj]);
     }
-
     setNewTask('');
     handleClickShowForm();
+    setIsDisable(true);
   };
 
   const renderFormNewTask = () => {
@@ -67,6 +71,7 @@ function App() {
               type="button"
               value="Guardar"
               onClick={handleClickSaveNewTask}
+              disabled={isDisable}
             ></input>
           </form>
         </div>

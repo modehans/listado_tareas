@@ -38,5 +38,6 @@ Cada vez que se modifique un fichero se refresca la página.
 ## Tecnología utilizada
 
 - [React](https://es.reactjs.org/)
+- [Node](https://nodejs.org/es/)
 - [Sass](https://sass-lang.com/)
 - [JS](https://developer.mozilla.org/es/docs/Web/JavaScript)
