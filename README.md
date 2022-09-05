@@ -14,6 +14,10 @@ Al pulsar Guardar, se añadirá la tarea al listado. Si es la primera tarea que 
 
 ![Ventana modal](/docsImages/img_listaTareas-2.png)
 
+## Pendientes
+
+- Poder borrar tareas de la lista.
+
 ## Instalación por primera vez del proyecto
 
 1. Descargar el repositorio
@@ -33,6 +37,6 @@ Cada vez que se modifique un fichero se refresca la página.
 
 ## Tecnología utilizada
 
-- [Adalab Web Starter kit](https://github.com/Adalab/adalab-web-starter-kit)
+- [React](https://es.reactjs.org/)
 - [Sass](https://sass-lang.com/)
 - [JS](https://developer.mozilla.org/es/docs/Web/JavaScript)
