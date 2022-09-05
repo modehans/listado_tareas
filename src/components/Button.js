@@ -1,13 +1,13 @@
 import '../styles/components/Button.scss';
 
 const Button = (props) => {
-  const handleClickShowForm = (ev) => {
+  const handleClick = (ev) => {
     ev.preventDefault();
-    props.handleClickShowForm();
+    props.handleClick();
   };
   return (
-    <button className="button" onClick={handleClickShowForm}>
-      Añadir tarea
+    <button className="button" onClick={handleClick}>
+      {props.children}
     </button>
   );
 };

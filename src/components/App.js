@@ -25,6 +25,11 @@ function App() {
   const handleClickShowForm = () => {
     setFormHidden(!isFormHidden);
   };
+
+  const handleClickReset = () => {
+    setTasks([INITIAL_TASK]);
+  };
+
   const handleChangeNewTask = (ev) => {
     setNewTask(ev.currentTarget.value);
     if (newTask !== '') {
@@ -115,7 +120,10 @@ function App() {
       <Header />
       <main className="main">
         <ul className="list">{renderTask()}</ul>
-        <Button handleClickShowForm={handleClickShowForm} />
+        <Button handleClick={handleClickShowForm}>Añadir Tarea</Button>
+        <Button handleClick={handleClickReset}>
+          Eliminar todas las tareas
+        </Button>
         {renderFormNewTask()}
       </main>
     </div>
