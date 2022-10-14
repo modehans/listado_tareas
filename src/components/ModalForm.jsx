@@ -9,31 +9,38 @@ const ModalForm = (props) => {
 
   const isFormHidden=props.isFormHidden;
 
-
-  const handleClickShowForm=()=>{
-       props.handleClickShowForm()
+  const resetCounter=()=>{
+      setWordCounter(0)
+      setChartCounter(0)
   }
+
+  const handleClickCloseForm=()=>{
+       props.handleClickShowForm()
+       setNewTask('')
+       resetCounter()
+  }
+  
   const handleClickSaveNewTask = (ev) => {
     ev.preventDefault()
-    const newTaskObj = { id: uuid(), task: newTask, completed: false };
+    const newTaskObj = { id: uuid(), task: newTask, completed: false }
     props.handleClickSaveNewTask(newTaskObj)
-    setNewTask('');
-   
+    setNewTask('')
+    resetCounter()
   };
 
   const handleChangeNewTask=(ev)=>{
     setNewTask(ev.currentTarget.value);
-    setChartCounter(ev.currentTarget.value.split('').length);
+    setChartCounter(ev.currentTarget.value.split('').length)
     setWordCounter(
       wordCounter === [] ? 0 : ev.currentTarget.value.split(' ').filter(word=>word!==' ').length
-    );
+    )
     }
 
   if (isFormHidden === false) {
     return (
       <div className="modal">
         <form className="form" action="">
-          <button className="form__btnClose" onClick={handleClickShowForm}>
+          <button className="form__btnClose" onClick={handleClickCloseForm}>
             Cerrar
           </button>
           <label className="form__title" htmlFor="newText">
