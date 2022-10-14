@@ -42,7 +42,8 @@ function App() {
   const handleClickSaveNewTask = (ev) => {
     ev.preventDefault();
     const newTaskObj = { id: uuid(), task: newTask, completed: false };
-    if (tasks[0].id === 'initialTask' || tasks === []) {
+    console.log(tasks);
+    if (tasks.length === 0 || tasks[0].id === 'initialTask') {
       setTasks([newTaskObj]);
     } else {
       setTasks([...tasks, newTaskObj]);
