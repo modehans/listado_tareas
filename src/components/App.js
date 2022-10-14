@@ -1,11 +1,12 @@
 import '../styles/App.scss';
 
 import { useState, useEffect } from 'react';
-import { v4 as uuid } from 'uuid';
+
 import ls from '../services/localStorage';
 import Header from './Header';
 import Button from './Button';
 import Footer from './Footer';
+import ModalForm from './ModalForm';
 
 function App() {
   const INITIAL_TASK = {
@@ -15,11 +16,8 @@ function App() {
   };
   //Variables de estado
   const [tasks, setTasks] = useState(ls.get('lstasks', [INITIAL_TASK]));
-  const [newTask, setNewTask] = useState('');
+
   const [isFormHidden, setFormHidden] = useState(true);
-  const [isDisable, setIsDisable] = useState(true);
-  const [wordCounter, setWordCounter] = useState(0);
-  const [chartCounter, setChartCounter] = useState(0);
 
   useEffect(() => {
     ls.set('lstasks', tasks);
@@ -33,67 +31,6 @@ function App() {
     setTasks([INITIAL_TASK]);
   };
 
-  const handleChangeNewTask = (ev) => {
-    setNewTask(ev.currentTarget.value);
-    setChartCounter(ev.currentTarget.value.split('').length);
-    setWordCounter(
-      wordCounter === [] ? 0 : ev.currentTarget.value.split(' ').length
-    );
-    if (newTask !== '') {
-      setIsDisable(false);
-    }
-  };
-
-  const handleClickSaveNewTask = (ev) => {
-    ev.preventDefault();
-    const newTaskObj = { id: uuid(), task: newTask, completed: false };
-    if (tasks.length === 0 || tasks[0].id === 'initialTask') {
-      setTasks([newTaskObj]);
-    } else {
-      setTasks([...tasks, newTaskObj]);
-    }
-    setNewTask('');
-    handleClickShowForm();
-    setIsDisable(true);
-  };
-
-  const renderFormNewTask = () => {
-    if (isFormHidden === false) {
-      return (
-        <div className="modal">
-          <form className="form" action="">
-            <button className="form__btnClose" onClick={handleClickShowForm}>
-              Cerrar
-            </button>
-            <label className="form__title" htmlFor="newText">
-              Añade una nueva tarea
-            </label>
-            <textarea
-              className="form__input-textarea"
-              name="newText"
-              id="newText"
-              cols="30"
-              rows="5"
-              placeholder="Por ej: Procastinando, no se llega a ningún lado. Aunque tampoco quiero ir a ningún otro sitio..."
-              onChange={handleChangeNewTask}
-              value={newTask}
-            ></textarea>
-            <p>
-              {chartCounter} caracteres y {wordCounter} palabras
-            </p>
-            <input
-              className="button"
-              type="button"
-              value="Guardar"
-              onClick={handleClickSaveNewTask}
-              disabled={isDisable}
-            ></input>
-          </form>
-        </div>
-      );
-    }
-  };
-
   const calculateTaskClass = (eachTask) => {
     if (eachTask.completed === true) {
       return 'completed';
@@ -102,7 +39,7 @@ function App() {
     }
   };
 
-  const handleClick = (ev) => {
+  const handleClickComplete = (ev) => {
     console.log(ev.currentTarget.id);
     const clickedTaskId = ev.currentTarget.id;
     const foundTask = tasks.find((eachTask) => eachTask.id === clickedTaskId);
@@ -116,6 +53,15 @@ function App() {
     setTasks([...filterTasks]);
   };
 
+  const handleClickSaveNewTask = (newTaskObj) => {
+    if (tasks.length === 0 || tasks[0].id === 'initialTask') {
+      setTasks([newTaskObj]);
+    } else {
+      setTasks([...tasks, newTaskObj]);
+    }
+    handleClickShowForm();
+  };
+
   const renderTask = () => {
     return tasks.map((eachTask) => (
       <li key={eachTask.id} id={`task-${eachTask.id}`} className="task">
@@ -124,7 +70,7 @@ function App() {
           name={`task-${eachTask.id}`}
           id={eachTask.id}
           checked={eachTask.completed}
-          onChange={handleClick}
+          onChange={handleClickComplete}
         />
         <p className={calculateTaskClass(eachTask)}>{eachTask.task}</p>
         <i
@@ -146,8 +92,12 @@ function App() {
             Eliminar todas las tareas
           </Button>
         </section>
-        {renderFormNewTask()}
       </main>
+      <ModalForm
+        isFormHidden={isFormHidden}
+        handleClickShowForm={handleClickShowForm}
+        handleClickSaveNewTask={handleClickSaveNewTask}
+      />
       <Footer />
     </div>
   );
