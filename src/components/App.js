@@ -116,26 +116,20 @@ function App() {
 
   const renderTask = () => {
     return tasks.map((eachTask) => (
-      <li
-        key={eachTask.id}
-        id={`task-${eachTask.id}`}
-        className={calculateTaskClass(eachTask)}
-      >
-        <p>
-          <input
-            type="checkbox"
-            name={`task-${eachTask.id}`}
-            id={eachTask.id}
-            checked={eachTask.completed}
-            onChange={handleClick}
-          />{' '}
-          {eachTask.task}{' '}
-          <i
-            className="fa-regular fa-trash-can"
-            id={`delete:${eachTask.id}`}
-            onClick={handleDelete}
-          ></i>
-        </p>
+      <li key={eachTask.id} id={`task-${eachTask.id}`} className="task">
+        <input
+          type="checkbox"
+          name={`task-${eachTask.id}`}
+          id={eachTask.id}
+          checked={eachTask.completed}
+          onChange={handleClick}
+        />
+        <p className={calculateTaskClass(eachTask)}>{eachTask.task}</p>
+        <i
+          className="fa-regular fa-trash-can"
+          id={`delete:${eachTask.id}`}
+          onClick={handleDelete}
+        ></i>
       </li>
     ));
   };
@@ -144,10 +138,12 @@ function App() {
       <Header />
       <main className="main">
         <ul className="list">{renderTask()}</ul>
-        <Button handleClick={handleClickShowForm}>Añadir Tarea</Button>
-        <Button handleClick={handleClickReset}>
-          Eliminar todas las tareas
-        </Button>
+        <section>
+          <Button handleClick={handleClickShowForm}>Añadir Tarea</Button>
+          <Button handleClick={handleClickReset}>
+            Eliminar todas las tareas
+          </Button>
+        </section>
         {renderFormNewTask()}
       </main>
     </div>

@@ -1,7 +1,6 @@
 @import './core/reset.scss';
 
 .container {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,17 +19,21 @@
 }
 
 .list {
+  min-height: 3rem;
   display: flex;
   flex-direction: column;
   gap: 1em;
 
 }
 
+.task {
+  display: flex;
+  gap: 2rem
+}
+
 .completed {
   text-decoration: line-through;
 }
-
-
 
 .modal {
   position: fixed;
