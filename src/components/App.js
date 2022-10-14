@@ -32,6 +32,8 @@ function App() {
 
   const handleChangeNewTask = (ev) => {
     setNewTask(ev.currentTarget.value);
+    setChartCounter(ev.currentTarget.value.split('').length);
+    setWordCounter(ev.currentTarget.value.split(' ').length - 1);
     if (newTask !== '') {
       setIsDisable(false);
     }
@@ -50,6 +52,8 @@ function App() {
     setIsDisable(true);
   };
 
+  const [wordCounter, setWordCounter] = useState(0);
+  const [chartCounter, setChartCounter] = useState(0);
   const renderFormNewTask = () => {
     if (isFormHidden === false) {
       return (
@@ -71,6 +75,9 @@ function App() {
               onChange={handleChangeNewTask}
               value={newTask}
             ></textarea>
+            <p>
+              {chartCounter} caracteres y {wordCounter} palabras
+            </p>
             <input
               className="button"
               type="button"
@@ -109,7 +116,7 @@ function App() {
             id={eachTask.id}
             checked={eachTask.completed}
             onChange={handleClick}
-          />{' '}
+          />
           {eachTask.task}
         </p>
       </li>
