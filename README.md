@@ -5,7 +5,7 @@
 Consite en una página en la que se puden crear tareas pendientes. Estas se guardan en el localStorage del navegador
 [Página para crear tareas](https://modehans.github.io/listado_tareas/)
 
-Inicialmenta hay una tarea escrita como ejemplo.
+Inicialmenta hay una tarea escrita como ejemplo. Todas las tareas pueden borrarse pulsando click sobre la papelera. Si se hace click sobre el check la tarea aparecerá tachada.
 
 ![Página de inicio](/docsImages/img_listaTareas-1.png)
 
@@ -15,8 +15,6 @@ Al pulsar Guardar, se añadirá la tarea al listado. Si es la primera tarea que 
 ![Ventana modal](/docsImages/img_listaTareas-2.png)
 
 ## Pendientes
-
-- Poder borrar tareas de la lista.
 
 ## Instalación por primera vez del proyecto
 
