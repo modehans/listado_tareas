@@ -42,7 +42,7 @@ function App() {
   const handleClickSaveNewTask = (ev) => {
     ev.preventDefault();
     const newTaskObj = { id: uuid(), task: newTask, completed: false };
-    if (tasks[0].id === 'initialTask') {
+    if (tasks[0].id === 'initialTask' || tasks === []) {
       setTasks([newTaskObj]);
     } else {
       setTasks([...tasks, newTaskObj]);
@@ -100,24 +100,40 @@ function App() {
   };
 
   const handleClick = (ev) => {
+    console.log(ev.currentTarget.id);
     const clickedTaskId = ev.currentTarget.id;
     const foundTask = tasks.find((eachTask) => eachTask.id === clickedTaskId);
     foundTask.completed = !foundTask.completed;
     setTasks([...tasks]);
   };
 
+  const handleDelete = (ev) => {
+    const deleteTask = ev.currentTarget.id.split(':');
+    const filterTasks = tasks.filter((task) => task.id !== deleteTask[1]);
+    setTasks([...filterTasks]);
+  };
+
   const renderTask = () => {
     return tasks.map((eachTask) => (
-      <li key={eachTask.id} id={`task-${eachTask.id}`}>
-        <p className={calculateTaskClass(eachTask)}>
+      <li
+        key={eachTask.id}
+        id={`task-${eachTask.id}`}
+        className={calculateTaskClass(eachTask)}
+      >
+        <p>
           <input
             type="checkbox"
             name={`task-${eachTask.id}`}
             id={eachTask.id}
             checked={eachTask.completed}
             onChange={handleClick}
-          />
-          {eachTask.task}
+          />{' '}
+          {eachTask.task}{' '}
+          <i
+            className="fa-regular fa-trash-can"
+            id={`delete:${eachTask.id}`}
+            onClick={handleDelete}
+          ></i>
         </p>
       </li>
     ));
