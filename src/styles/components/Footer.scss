@@ -1,0 +1,23 @@
+.footer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+  color: purple;
+  font-size: 0.8rem;
+
+
+  &__links {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+.fa-brands {
+  color: purple;
+  list-style: none;
+  padding: 0 5px;
+}

@@ -5,11 +5,12 @@ import { v4 as uuid } from 'uuid';
 import ls from '../services/localStorage';
 import Header from './Header';
 import Button from './Button';
+import Footer from './Footer';
 
 function App() {
   const INITIAL_TASK = {
     id: 'initialTask',
-    task: 'Dejar de procastinar y hacer lista de tareas',
+    task: 'Dejar de procastinar y hacer la lista de tareas',
     completed: false,
   };
   //Variables de estado
@@ -17,6 +18,8 @@ function App() {
   const [newTask, setNewTask] = useState('');
   const [isFormHidden, setFormHidden] = useState(true);
   const [isDisable, setIsDisable] = useState(true);
+  const [wordCounter, setWordCounter] = useState(0);
+  const [chartCounter, setChartCounter] = useState(0);
 
   useEffect(() => {
     ls.set('lstasks', tasks);
@@ -44,7 +47,6 @@ function App() {
   const handleClickSaveNewTask = (ev) => {
     ev.preventDefault();
     const newTaskObj = { id: uuid(), task: newTask, completed: false };
-    console.log(tasks);
     if (tasks.length === 0 || tasks[0].id === 'initialTask') {
       setTasks([newTaskObj]);
     } else {
@@ -55,8 +57,6 @@ function App() {
     setIsDisable(true);
   };
 
-  const [wordCounter, setWordCounter] = useState(0);
-  const [chartCounter, setChartCounter] = useState(0);
   const renderFormNewTask = () => {
     if (isFormHidden === false) {
       return (
@@ -74,7 +74,7 @@ function App() {
               id="newText"
               cols="30"
               rows="5"
-              placeholder="Procastinando, no se llega a ningún lado. Aunque tampoco quiero ir a ningún otro sitio..."
+              placeholder="Por ej: Procastinando, no se llega a ningún lado. Aunque tampoco quiero ir a ningún otro sitio..."
               onChange={handleChangeNewTask}
               value={newTask}
             ></textarea>
@@ -148,6 +148,7 @@ function App() {
         </section>
         {renderFormNewTask()}
       </main>
+      <Footer />
     </div>
   );
 }
