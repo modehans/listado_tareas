@@ -33,7 +33,9 @@ function App() {
   const handleChangeNewTask = (ev) => {
     setNewTask(ev.currentTarget.value);
     setChartCounter(ev.currentTarget.value.split('').length);
-    setWordCounter(ev.currentTarget.value.split(' ').length - 1);
+    setWordCounter(
+      wordCounter === [] ? 0 : ev.currentTarget.value.split(' ').length
+    );
     if (newTask !== '') {
       setIsDisable(false);
     }
