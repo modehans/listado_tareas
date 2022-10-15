@@ -19,7 +19,7 @@ const ModalForm = (props) => {
        setNewTask('')
        resetCounter()
   }
-  
+
   const handleClickSaveNewTask = (ev) => {
     ev.preventDefault()
     const newTaskObj = { id: uuid(), task: newTask, completed: false }
@@ -63,7 +63,7 @@ const ModalForm = (props) => {
             className="button"
             type="button"
             value="Guardar"
-            onClick={handleClickSaveNewTask}          ></input>
+            onClick={handleClickSaveNewTask}></input>
         </form>
       </div>
     );
