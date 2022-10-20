@@ -14,17 +14,16 @@ Al pulsar Guardar, se añadirá la tarea al listado. Si es la primera tarea que 
 
 ![Ventana modal](/docsImages/img_listaTareas-2.png)
 
-## Pendientes
 
-## Instalación por primera vez del proyecto
+## Instalación
 
 1. Descargar el repositorio
-   > git colone https://github.com/modehans/listado_tareas.git
-2. Abrir una terminal
-3. Instalar las dependencias
+   > git colne https://github.com/modehans/listado_tareas.git
+
+2. Instalar las dependencias
    > npm install
 
-## Arrancar el proyecto
+## Ejecución
 
 Una vez instaladas las dependencias hay que arrancar el proyecto. para ello hay que ejecutar el siguiente comando en la terminal.
 
