@@ -1,41 +1,44 @@
-# Listado de Tareas
+# **To Do List**
 
-## Descripción de aplicación
+## App description
 
-Consite en una página en la que se puden crear tareas pendientes. Estas se guardan en el localStorage del navegador
-[Página para crear tareas](https://modehans.github.io/listado_tareas/)
+Responsive To Do app, that allows you adding, crossing out and deleting task
 
-Inicialmenta hay una tarea escrita como ejemplo. Todas las tareas pueden borrarse pulsando click sobre la papelera. Si se hace click sobre el check la tarea aparecerá tachada.
+[Page to create tasks](https://modehans.github.io/listado_tareas/)
 
+Initially there is one task written as an example. All tasks can be deleted by clicking on the trash can. If you click on the check the task will be crossed out.
 ![Página de inicio](/docsImages/img_listaTareas-1.png)
 
-Si pulsamos añadir tarea, se abre una ventana modal en la cual podremos rellenar la descripción de la tarea.
-Al pulsar Guardar, se añadirá la tarea al listado. Si es la primera tarea que añadimos, se eliminará la tarea inicial.
+If we click on add task, a modal window opens in which we can fill in the description of the task.
+When you click Save, the task will be added to the list and saved in the browser's localStorage. If it is the first task we add, the initial task will be deleted.
 
 ![Ventana modal](/docsImages/img_listaTareas-2.png)
 
-## Pendientes
+## Start 🚀
 
-## Instalación por primera vez del proyecto
+### Installation 🔧
 
-1. Descargar el repositorio
-   > git colone https://github.com/modehans/listado_tareas.git
-2. Abrir una terminal
-3. Instalar las dependencias
-   > npm install
+Run the following command to install all the packages needed
 
-## Arrancar el proyecto
+> npm install
 
-Una vez instaladas las dependencias hay que arrancar el proyecto. para ello hay que ejecutar el siguiente comando en la terminal.
+### Run
+
+Run the command
 
 > npm start
 
-De esta forma se abre una ventana en nuestro navegador y muestra la página web.
-Cada vez que se modifique un fichero se refresca la página.
+## Stack 🛠️
 
-## Tecnología utilizada
+App built with:
 
 - [React](https://es.reactjs.org/)
 - [Node](https://nodejs.org/es/)
+- [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript)
 - [Sass](https://sass-lang.com/)
-- [JS](https://developer.mozilla.org/es/docs/Web/JavaScript)
+- [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
+- [CSS3](https://developer.mozilla.org/es/docs/Web/CSS)
+
+## Author ✒️
+
+**Mónica Gonzalez** - [monicaglezsanch](https://www.linkedin.com/in/monicaglezsanch/)
